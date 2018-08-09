@@ -2,7 +2,9 @@ import { signInUser, signupUser, signOutUser, addUser } from "@/firebase";
 
 const state = {
   user: null,
-  errorMessage: null
+  request: null,
+  success: null,
+  error: null
 };
 
 export const getters = {};
@@ -16,32 +18,40 @@ export const mutations = {
   clearUser(state) {
     state.user = null;
   },
-  setErrorMessage(state, { message }) {
-    state.errorMessage = message;
+  request(state) {
+    state.request = true;
+    state.success = null;
+    state.error = null;
   },
-  clearErrorMessage(state) {
-    state.errorMessage = null;
+  success(state) {
+    state.request = null;
+    state.success = true;
+    state.error = null;
+  },
+  error(state, { message }) {
+    state.request = null;
+    state.success = null;
+    state.error = message;
   }
 };
 
 export const actions = {
   signInUser({ commit, dispatch }, payload) {
-    commit("clearErrorMessage");
+    commit("request");
     // TODO: Trigger application loading
     const loginPromise = signInUser(payload);
     loginPromise
       .then(user => {
         dispatch("setUser", { user });
-        // TODO: commit success
+        commit("success");
       })
       .catch(error => {
-        console.log(error);
-        commit("setErrorMessage", { message: error.message });
+        commit("error", { message: error.message });
       });
   },
 
   signupUser({ commit, dispatch }, { email, password }) {
-    // commit("clearErrorMessage");
+    commit("request");
     const createdUserPromise = signupUser({ email, password });
     createdUserPromise
       .then(user => {
@@ -50,13 +60,14 @@ export const actions = {
         addUserPromise
           .then(() => {
             dispatch("setUser", { user });
+            commit("success");
           })
           .catch(error => {
-            // commit("setErrorMessage", error.message);
+            commit("error", { message: error.message });
           });
       })
       .catch(error => {
-        // commit("setErrorMessage", error.message);
+        commit("error", { message: error.message });
       });
   },
 
