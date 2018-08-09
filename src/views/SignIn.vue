@@ -4,6 +4,7 @@
     <input v-model="email" type="text" placeholder="email" /><br/>
     <input v-model="password" type="password" placeholder="password" /><br/>
     <button @click="onLogin">Login</button>
+    <p v-if="errorMessage">{{errorMessage}}</p>
     <p>You don't have an account? You can <router-link to="/sign-up">create one here</router-link></p>
   </div>
 </template>
@@ -19,6 +20,10 @@ export default {
   computed: {
     user() {
       return this.$store.state.user.user;
+    },
+
+    errorMessage() {
+      return this.$store.state.user.errorMessage;
     }
   },
   watch: {

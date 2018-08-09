@@ -1,7 +1,8 @@
 import { signInUser, signupUser, signOutUser, addUser } from "@/firebase";
 
 const state = {
-  user: null
+  user: null,
+  errorMessage: null
 };
 
 export const getters = {};
@@ -14,13 +15,19 @@ export const mutations = {
   },
   clearUser(state) {
     state.user = null;
+  },
+  setErrorMessage(state, { message }) {
+    state.errorMessage = message;
+  },
+  clearErrorMessage(state) {
+    state.errorMessage = null;
   }
 };
 
 export const actions = {
   signInUser({ commit, dispatch }, payload) {
-    // commit("clearError");
-    // TODO: commit loading
+    commit("clearErrorMessage");
+    // TODO: Trigger application loading
     const loginPromise = signInUser(payload);
     loginPromise
       .then(user => {
@@ -28,12 +35,13 @@ export const actions = {
         // TODO: commit success
       })
       .catch(error => {
-        // commit("setError", error.message);
+        console.log(error);
+        commit("setErrorMessage", { message: error.message });
       });
   },
 
   signupUser({ commit, dispatch }, { email, password }) {
-    // commit("clearError");
+    // commit("clearErrorMessage");
     const createdUserPromise = signupUser({ email, password });
     createdUserPromise
       .then(user => {
@@ -44,23 +52,23 @@ export const actions = {
             dispatch("setUser", { user });
           })
           .catch(error => {
-            // commit("setError", error.message);
+            // commit("setErrorMessage", error.message);
           });
       })
       .catch(error => {
-        // commit("setError", error.message);
+        // commit("setErrorMessage", error.message);
       });
   },
 
   signOutUser({ commit }) {
-    // commit("clearError");
+    // commit("clearErrorMessage");
     const signOutPromise = signOutUser();
     signOutPromise
       .then(() => {
         commit("clearUser");
       })
       .catch(error => {
-        // commit("setError", error.message);
+        // commit("setErrorMessage", error.message);
       });
   },
 
