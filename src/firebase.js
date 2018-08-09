@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import "firebase/firestore";
 
 const apiKey = process.env.VUE_APP_FIREBASE_KEY;
 const authDomain = `${process.env.VUE_APP_FIREBASE_PROJECTID}.firebaseapp.com`;
@@ -20,6 +21,12 @@ const config = {
 
 firebase.initializeApp(config);
 
+// To remove firebase warning when trying to add record
+// Using Cloud Firestore
+const firestore = firebase.firestore();
+const settings = { /* your settings... */ timestampsInSnapshots: true };
+firestore.settings(settings);
+
 export default firebase;
 
 export function onAuthenticationChanged() {
@@ -28,12 +35,10 @@ export function onAuthenticationChanged() {
       user => {
         console.log("Authentication changed: ", user);
         resolve(user);
-
         return;
       },
       error => {
         console.error("Authentication error: ", error);
-
         reject(error);
       }
     );
@@ -82,20 +87,42 @@ export function signInUser({ email, password }) {
   });
 }
 
+const userModel = ({ user }) => {
+  console.log("found email", user.email);
+  return {
+    firstname: "",
+    lastname: "",
+    email: user.email
+  };
+};
+
 export function addUser(user) {
   return new Promise((resolve, reject) => {
+    // Using Cloud Firestore
     firebase
-      .database()
-      .ref("users")
-      .child(user.uid)
-      .set(user)
-      .then(data => {
-        resolve(data);
-        return;
+      .firestore()
+      .collection("users")
+      .add(userModel(user))
+      .then(ref => {
+        console.log("Added user", ref);
       })
       .catch(error => {
         reject(error);
       });
+
+    // Example using Realtimedatabase
+    // firebase
+    //   .database()
+    //   .ref("users")
+    //   .child(user.user.uid)
+    //   .set(userModel(user))
+    //   .then(data => {
+    //     resolve(data);
+    //     return;
+    //   })
+    //   .catch(error => {
+    //     reject(error);
+    //   });
   });
 }
 
