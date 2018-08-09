@@ -2,11 +2,26 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/sign-in">Sign in</router-link> |
+      <router-link to="/sign-up">Sign up</router-link> |
+      <button @click="onLogOut">Logout</button>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    onLogOut() {
+      this.$store.dispatch("signOutUser");
+      this.$router.replace("sign-in");
+    }
+  }
+};
+</script>
+
 
 <style>
 #app {
