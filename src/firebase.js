@@ -39,6 +39,11 @@ export function onAuthenticationChanged() {
     );
   });
 }
+
+export function getUser() {
+  return firebase.auth().currentUser;
+}
+
 export function signupUser({ email, password }) {
   return new Promise((resolve, reject) => {
     const createdUser = firebase
@@ -92,10 +97,6 @@ export function addUser(user) {
         reject(error);
       });
   });
-}
-
-export function getUser() {
-  return firebase.auth().currentUser;
 }
 
 export function signOutUser() {
