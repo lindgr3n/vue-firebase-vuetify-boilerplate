@@ -10,23 +10,23 @@
         </v-toolbar>
         <v-container fill-height>
           <v-layout>
-            <v-flex>
-              <v-btn class="social-icon twitter" round>
+            <v-flex mr-5 ml-5>
+              <v-btn class="twitter" round block>
                 <v-icon>fab fa-twitter-square</v-icon>
                 <span>Twitter</span>
               </v-btn>
               <br />
-              <v-btn class="social-icon facebook" round>
+              <v-btn class="facebook" round block>
                 <v-icon class="facebook">fab fa-facebook-square</v-icon>
                 <span>Facebook</span>
               </v-btn>
               <br />
-              <v-btn class="social-icon github" round>
+              <v-btn class="github" round block>
                 <v-icon>fab fa-github-square</v-icon>
                 <span>Github</span>
               </v-btn>
               <br />
-              <v-btn class="social-icon google" round>
+              <v-btn class="google" round block>
                 <v-icon>fab fa-google-plus-square</v-icon>
                 <span>Google</span>
               </v-btn>
@@ -150,22 +150,18 @@ h5 {
   color: #000;
 }
 
-.social-icon {
-  width: 50%;
-}
-
 .google {
-  background-color: #dd4b39;
+  background-color: #dd4b39 !important;
   border: 2px solid #dd4b39;
   color: #fff;
 }
 .twitter {
-  background-color: #00aced;
+  background-color: #00aced !important;
   border: 2px solid #00aced;
   color: #fff;
 }
 .facebook {
-  background-color: #3b5999;
+  background-color: #3b5999 !important;
   border: 2px solid #3b5999;
   color: #fff;
 }
