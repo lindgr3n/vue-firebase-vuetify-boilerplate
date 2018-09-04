@@ -1,6 +1,16 @@
 <template>
 <v-app>
-  <div id="app">
+  <v-toolbar
+    color="primary"
+    dense
+    fixed
+    clipped-left
+    app
+  >
+    <v-toolbar-title class="mr-5 align-center">
+      <span class="title">Awesome application!</span>
+    </v-toolbar-title>
+    <v-spacer></v-spacer>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
@@ -8,8 +18,14 @@
       <router-link to="/sign-up">Sign up</router-link> |
       <button @click="onLogOut">Logout</button>
     </div>
-    <router-view/>
-  </div>
+  </v-toolbar>
+  <v-content>
+    <v-layout justify-content-center fill-height>
+      <v-flex fill-height>
+        <router-view/>
+      </v-flex>
+    </v-layout>
+  </v-content>
 </v-app>
 </template>
 
