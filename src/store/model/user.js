@@ -2,55 +2,53 @@ import { signInUser, signupUser, signOutUser, addUser } from "@/firebase";
 
 const state = {
   user: null,
-  request: null,
-  success: null,
-  error: null
+  user_request: null,
+  user_success: null,
+  user_error: null
 };
 
 export const getters = {};
 
 export const mutations = {
-  setUser(state, { user }) {
-    console.log("Setting user");
-
+  USER_UPDATE(state, { user }) {
     state.user = user;
   },
-  clearUser(state) {
+  USER_CLEAR(state) {
     state.user = null;
   },
-  request(state) {
-    state.request = true;
-    state.success = null;
-    state.error = null;
+  USER_REQUEST(state) {
+    state.user_request = true;
+    state.user_success = null;
+    state.user_error = null;
   },
-  success(state) {
-    state.request = null;
-    state.success = true;
-    state.error = null;
+  USER_SUCCESS(state) {
+    state.user_request = null;
+    state.user_success = true;
+    state.user_error = null;
   },
-  error(state, { message }) {
-    state.request = null;
-    state.success = null;
-    state.error = message;
+  USER_ERROR(state, { message }) {
+    state.user_request = null;
+    state.user_success = null;
+    state.user_error = message;
   }
 };
 
 export const actions = {
-  signInUser({ commit, dispatch }, payload) {
+  signInUser({ commit }, payload) {
     commit("request");
     // TODO: Trigger application loading
     const loginPromise = signInUser(payload);
     loginPromise
       .then(user => {
-        dispatch("setUser", { user });
-        commit("success");
+        commit("USER_UPDATE", { user });
+        commit("USER_SUCCES");
       })
       .catch(error => {
-        commit("error", { message: error.message });
+        commit("USER_ERROR", { message: error.message });
       });
   },
 
-  signupUser({ commit, dispatch }, { email, password }) {
+  signupUser({ commit }, { email, password }) {
     commit("request");
     const createdUserPromise = signupUser({ email, password });
     createdUserPromise
@@ -59,33 +57,27 @@ export const actions = {
         const addUserPromise = addUser(user);
         addUserPromise
           .then(() => {
-            dispatch("setUser", { user });
-            commit("success");
+            commit("USER_UPDATE", { user });
+            commit("USER_SUCCESS");
           })
           .catch(error => {
-            commit("error", { message: error.message });
+            commit("USER_ERROR", { message: error.message });
           });
       })
       .catch(error => {
-        commit("error", { message: error.message });
+        commit("USER_ERROR", { message: error.message });
       });
   },
 
   signOutUser({ commit }) {
-    // commit("clearErrorMessage");
     const signOutPromise = signOutUser();
     signOutPromise
       .then(() => {
-        commit("clearUser");
+        commit("USER_CLEAR");
       })
       .catch(error => {
-        // commit("setErrorMessage", error.message);
+        commit("USER_ERROR", error.message);
       });
-  },
-
-  setUser({ commit }, { user }) {
-    // TODO: update database latest login
-    commit("setUser", { user });
   }
 };
 

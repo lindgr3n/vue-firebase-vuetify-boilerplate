@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     error() {
-      return this.$store.state.user.error;
+      return this.$store.state.user.user_error;
     }
   },
   methods: {

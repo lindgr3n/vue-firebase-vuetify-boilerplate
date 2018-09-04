@@ -17,7 +17,7 @@ new Vue({
       if (user) {
         console.log("Auth changed found user", user);
 
-        this.$store.dispatch("setUser", { user });
+        this.$store.commit("USER_UPDATE", { user });
         this.$router.push("/");
       } else {
         this.$router.push("/sign-in");
