@@ -35,7 +35,7 @@
 export default {
   methods: {
     onLogOut() {
-      this.$store.dispatch("signOutUser");
+      this.$store.dispatch("USER_SIGNOUT");
       this.$router.replace("sign-in");
     }
   }

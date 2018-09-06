@@ -118,7 +118,7 @@ export default {
   },
   methods: {
     onLogin() {
-      this.$store.dispatch("signInUser", {
+      this.$store.dispatch("USER_SIGNIN", {
         email: this.email,
         password: this.password
       });

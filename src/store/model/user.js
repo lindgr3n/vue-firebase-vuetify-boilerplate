@@ -34,22 +34,22 @@ export const mutations = {
 };
 
 export const actions = {
-  signInUser({ commit }, payload) {
-    commit("request");
+  USER_SIGNIN({ commit }, payload) {
+    commit("USER_REQUEST");
     // TODO: Trigger application loading
     const loginPromise = signInUser(payload);
     loginPromise
       .then(user => {
         commit("USER_UPDATE", { user });
-        commit("USER_SUCCES");
+        commit("USER_SUCCESS");
       })
       .catch(error => {
         commit("USER_ERROR", { message: error.message });
       });
   },
 
-  signupUser({ commit }, { email, password }) {
-    commit("request");
+  USER_SIGNUP({ commit }, { email, password }) {
+    commit("USER_REQUEST");
     const createdUserPromise = signupUser({ email, password });
     createdUserPromise
       .then(user => {
@@ -69,7 +69,7 @@ export const actions = {
       });
   },
 
-  signOutUser({ commit }) {
+  USER_SIGNOUT({ commit }) {
     const signOutPromise = signOutUser();
     signOutPromise
       .then(() => {
