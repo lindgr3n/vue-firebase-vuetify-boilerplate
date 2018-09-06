@@ -1,20 +1,70 @@
 <template>
-  <div class="login">
-    <h3>Create a new account</h3>
-    <input v-model="email" type="text" placeholder="email" /><br/>
-    <input v-model="password" type="password" placeholder="password" /><br/>
-    <button @click="onSignUp">Sign up</button>
-    <p v-if="error">{{error}}</p>
-    <p>Got an account? <router-link to="/sign-in">login here</router-link></p>
-  </div>
+  <v-container>
+    <v-layout justify-center>
+      <v-flex xs12>
+        <v-card class="elevation-12">
+          <v-toolbar 
+            dark 
+            color="primary">
+            <v-toolbar-title>Signup</v-toolbar-title>
+            <v-spacer/>
+          </v-toolbar>
+          <v-container fill-height>
+            <v-layout 
+              class="verticalLine" 
+              align-center 
+              justify-center>
+              <v-flex xs8 >
+                <v-form 
+                  v-model="valid" 
+                  lazy-validation>
+                  <v-text-field 
+                    v-model="email" 
+                    :rules="emailRules" 
+                    prepend-icon="mail" 
+                    name="email" 
+                    label="Email" 
+                    type="text" />
+                  <v-text-field 
+                    v-model="password" 
+                    :rules="[v => !!v || 'Password is required']" 
+                    prepend-icon="lock" 
+                    name="password" 
+                    label="Password" 
+                    type="password"/>
+                </v-form>
+                <v-spacer/>
+                <v-layout column>
+                  <v-btn 
+                    :disabled="!valid" 
+                    color="primary" 
+                    class="test" 
+                    @click="onSignUp">Signup</v-btn>
+                  <p>Got an account? Login here <router-link to="/sign-in">Login</router-link></p>
+                </v-layout>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      valid: false,
       email: "",
-      password: ""
+      password: "",
+      emailRules: [
+        v => !!v || "E-mail is required",
+        v =>
+          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            v
+          ) || "E-mail is invalid"
+      ]
     };
   },
   computed: {
@@ -24,7 +74,7 @@ export default {
   },
   methods: {
     onSignUp() {
-      this.$store.dispatch("signupUser", {
+      this.$store.dispatch("USER_SIGNUP", {
         email: this.email,
         password: this.password
       });
