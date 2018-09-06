@@ -15,35 +15,35 @@
                 mr-5 
                 ml-5>
                 <v-btn 
-                  class="twitter" 
+                  class="social twitter" 
                   round 
                   block>
-                  <v-icon>fab fa-twitter-square</v-icon>
-                  <span>Twitter</span>
+                  <v-icon class="social-icon" >fab fa-twitter-square</v-icon>
+                  <span class="social-label">Twitter</span>
                 </v-btn>
                 <br >
                 <v-btn 
-                  class="facebook" 
+                  class="social facebook" 
                   round 
                   block>
-                  <v-icon class="facebook">fab fa-facebook-square</v-icon>
-                  <span>Facebook</span>
+                  <v-icon class="social-icon">fab fa-facebook-square</v-icon>
+                  <span class="social-label">Facebook</span>
                 </v-btn>
                 <br >
                 <v-btn 
-                  class="github" 
+                  class="social github" 
                   round 
                   block>
-                  <v-icon>fab fa-github-square</v-icon>
-                  <span>Github</span>
+                  <v-icon class="social-icon" >fab fa-github-square</v-icon>
+                  <span class="social-label">Github</span>
                 </v-btn>
                 <br >
                 <v-btn 
-                  class="google" 
+                  class="social google" 
                   round 
                   block>
-                  <v-icon>fab fa-google-plus-square</v-icon>
-                  <span>Google</span>
+                  <v-icon class="social-icon" >fab fa-google-plus-square</v-icon>
+                  <span class="social-label">Google</span>
                 </v-btn>
               </v-flex>
             </v-layout>
@@ -59,8 +59,9 @@
             <v-layout 
               class="verticalLine" 
               align-center 
-              justify-center>
-              <v-flex xs8 >
+              justify-center
+            >
+              <v-flex xs12 >
                 <v-form>
                   <v-text-field 
                     v-model="email" 
@@ -138,34 +139,6 @@ export default {
 </script>
 
 <style scoped>
-/* 
-
-.social-icons {
-  padding: 0 1%;
-}
-.social-icons i {
-  font-size: 18px;
-}
-.facebook,
-.twitter,
-.google,
-.linkedin,
-.foursquare,
-.vimeo,
-.flickr,
-.pinterest,
-.instagram,
-.tumblr {
-  width: 100%;
-  height: 40px;
-  padding-top: 2%;
-  margin-top: 2%;
-}
-.modal-icons {
-  margin-left: -10px;
-  margin-right: 20px;
-} */
-
 .circle {
   width: 50px;
   height: 50px;
@@ -194,61 +167,43 @@ h5 {
   color: #000;
 }
 
+.social {
+  width: 200px;
+  text-align: left;
+}
+.social > div.v-btn__content {
+  display: flex;
+  justify-content: flex-start !important;
+}
+
+.social-icon {
+  border-right: 1px solid;
+  padding-right: 5px;
+}
+
+.social-label {
+  padding-left: 10px;
+}
+
 .google {
   background-color: #dd4b39 !important;
   border: 2px solid #dd4b39;
   color: #fff;
 }
 .twitter {
-  background-color: #00aced !important;
-  border: 2px solid #00aced;
+  background-color: #55acee !important;
+  border: 2px solid #55acee;
   color: #fff;
 }
 .facebook {
-  background-color: #3b5999 !important;
-  border: 2px solid #3b5999;
+  background-color: #3b5998 !important;
+  border: 2px solid #3b5998;
   color: #fff;
 }
-/* .linkedin,
-.linkedin:hover {
-  background-color: #007bb6;
-  border: 2px solid #007bb6;
+
+.github {
+  background-color: #444 !important;
+  border: 2px solid #444;
   color: #fff;
 }
-.vimeo,
-.vimeo:hover {
-  background-color: #aad450;
-  border: 2px solid #aad450;
-  color: #fff;
-}
-.flickr,
-.flickr:hover {
-  background-color: #ff0084;
-  border: 2px solid #ff0084;
-  color: #fff;
-}
-.foursquare,
-.foursquare:hover {
-  background-color: #0072b1;
-  border: 2px solid #0072b1;
-  color: #fff;
-}
-.pinterest,
-.pinterest:hover {
-  background-color: #cb2027;
-  border: 2px solid #cb2027;
-  color: #fff;
-}
-.instagram,
-.instagram:hover {
-  background-color: #517fa4;
-  border: 2px solid #517fa4;
-  color: #fff;
-}
-.tumblr,
-.tumblr:hover {
-  background-color: #32506d;
-  border: 2px solid #32506d;
-  color: #fff;
-} */
 </style>
