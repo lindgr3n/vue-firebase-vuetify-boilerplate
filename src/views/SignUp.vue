@@ -33,6 +33,12 @@
                     label="Password" 
                     type="password"/>
                 </v-form>
+                <v-alert
+                  :value="error"
+                  type="error"
+                >
+                  {{ error }}
+                </v-alert>
                 <v-spacer/>
                 <v-layout column>
                   <v-btn 
@@ -70,6 +76,10 @@ export default {
   computed: {
     error() {
       return this.$store.state.user.user_error;
+    },
+
+    loading() {
+      return this.$store.state.user.user_request;
     }
   },
   methods: {
