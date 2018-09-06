@@ -19,3 +19,6 @@ yarn run build
 ```
 yarn run lint
 ```
+
+
+Social style from https://lipis.github.io/bootstrap-social/
