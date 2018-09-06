@@ -1,62 +1,94 @@
 <template>
- <v-container>
-   <v-layout justify-center>
-     <v-flex xs12>
-      <v-card class="elevation-12">
-        <v-toolbar dark color="primary">
-          <v-toolbar-title>Login</v-toolbar-title>
-          <v-spacer></v-spacer>
-          
-        </v-toolbar>
-        <v-container fill-height>
-          <v-layout>
-            <v-flex mr-5 ml-5>
-              <v-btn class="twitter" round block>
-                <v-icon>fab fa-twitter-square</v-icon>
-                <span>Twitter</span>
-              </v-btn>
-              <br />
-              <v-btn class="facebook" round block>
-                <v-icon class="facebook">fab fa-facebook-square</v-icon>
-                <span>Facebook</span>
-              </v-btn>
-              <br />
-              <v-btn class="github" round block>
-                <v-icon>fab fa-github-square</v-icon>
-                <span>Github</span>
-              </v-btn>
-              <br />
-              <v-btn class="google" round block>
-                <v-icon>fab fa-google-plus-square</v-icon>
-                <span>Google</span>
-              </v-btn>
-            </v-flex>
-          </v-layout>
-          <div class="wrapper">
-            <div class="vertical-line" color="primary"></div> 
-            <div class="circle">
-              <h5>OR</h5>
+  <v-container>
+    <v-layout justify-center>
+      <v-flex xs12>
+        <v-card class="elevation-12">
+          <v-toolbar 
+            dark 
+            color="primary">
+            <v-toolbar-title>Login</v-toolbar-title>
+            <v-spacer/>
+          </v-toolbar>
+          <v-container fill-height>
+            <v-layout>
+              <v-flex 
+                mr-5 
+                ml-5>
+                <v-btn 
+                  class="twitter" 
+                  round 
+                  block>
+                  <v-icon>fab fa-twitter-square</v-icon>
+                  <span>Twitter</span>
+                </v-btn>
+                <br >
+                <v-btn 
+                  class="facebook" 
+                  round 
+                  block>
+                  <v-icon class="facebook">fab fa-facebook-square</v-icon>
+                  <span>Facebook</span>
+                </v-btn>
+                <br >
+                <v-btn 
+                  class="github" 
+                  round 
+                  block>
+                  <v-icon>fab fa-github-square</v-icon>
+                  <span>Github</span>
+                </v-btn>
+                <br >
+                <v-btn 
+                  class="google" 
+                  round 
+                  block>
+                  <v-icon>fab fa-google-plus-square</v-icon>
+                  <span>Google</span>
+                </v-btn>
+              </v-flex>
+            </v-layout>
+            <div class="wrapper">
+              <div 
+                class="vertical-line" 
+                color="primary"/> 
+              <div class="circle">
+                <h5>OR</h5>
+              </div>
+              <div class="vertical-line"/> 
             </div>
-            <div class="vertical-line"></div> 
-          </div>
-          <v-layout class="verticalLine" align-center justify-center>
-            <v-flex xs8 >
-              <v-form>
-                <v-text-field prepend-icon="person" name="login" label="Login" type="text"></v-text-field>
-                <v-text-field id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
-              </v-form>
-              <v-spacer></v-spacer>
-              <v-layout column>
-                <v-btn color="primary" @click="onLogin">Login</v-btn>
-                <p>Don't got an account? Signup here <router-link to="/sign-up">Signup</router-link></p>
-              </v-layout>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-card>
-     </v-flex>
-   </v-layout>
- </v-container>
+            <v-layout 
+              class="verticalLine" 
+              align-center 
+              justify-center>
+              <v-flex xs8 >
+                <v-form>
+                  <v-text-field 
+                    v-model="email" 
+                    prepend-icon="mail" 
+                    name="login" 
+                    label="Login" 
+                    type="text"/>
+                  <v-text-field 
+                    v-model="password" 
+                    prepend-icon="lock" 
+                    name="password" 
+                    label="Password" 
+                    type="password"/>
+                </v-form>
+                <v-spacer/>
+                <v-layout column>
+                  <v-btn 
+                    color="primary" 
+                    @click="onLogin">Login</v-btn>
+                  <p>Don't got an account? Signup here <router-link to="/sign-up">Signup</router-link></p>
+                </v-layout>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
