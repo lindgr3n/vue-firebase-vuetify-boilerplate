@@ -75,10 +75,17 @@
                     label="Password" 
                     type="password"/>
                 </v-form>
+                <v-alert
+                  :value="error"
+                  type="error"
+                >
+                  {{ error }}
+                </v-alert>
                 <v-spacer/>
                 <v-layout column>
                   <v-btn 
-                    color="primary" 
+                    :loading="loading" 
+                    color="primary"
                     @click="onLogin">Login</v-btn>
                   <p>Don't got an account? Signup here <router-link to="/sign-up">Signup</router-link></p>
                 </v-layout>
@@ -106,11 +113,14 @@ export default {
 
     error() {
       return this.$store.state.user.user_error;
+    },
+
+    loading() {
+      return this.$store.state.user.user_request;
     }
   },
   watch: {
     user(newValue) {
-      console.log("Watcher", newValue);
       if (newValue) {
         this.$router.replace("/");
       }
@@ -128,7 +138,9 @@ export default {
 </script>
 
 <style scoped>
-/* .social-icons {
+/* 
+
+.social-icons {
   padding: 0 1%;
 }
 .social-icons i {
