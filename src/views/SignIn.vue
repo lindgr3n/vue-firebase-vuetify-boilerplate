@@ -15,6 +15,7 @@
             block>
             <v-icon class="social-icon" >fab fa-twitter-square</v-icon>
             <span class="social-label">Twitter</span>
+            <div class="fill"/>
           </v-btn>
           <br >
           <v-btn 
@@ -23,6 +24,7 @@
             block>
             <v-icon class="social-icon">fab fa-facebook-square</v-icon>
             <span class="social-label">Facebook</span>
+            <div class="fill"/>
           </v-btn>
           <br >
           <v-btn 
@@ -31,6 +33,7 @@
             block>
             <v-icon class="social-icon" >fab fa-github-square</v-icon>
             <span class="social-label">Github</span>
+            <div class="fill"/>
           </v-btn>
           <br >
           <v-btn 
@@ -39,6 +42,7 @@
             block>
             <v-icon class="social-icon" >fab fa-google-plus-square</v-icon>
             <span class="social-label">Google</span>
+            <div class="fill"/>
           </v-btn>
         </div>
         <div class="wrapper">
@@ -124,6 +128,9 @@ export default {
 </script>
 
 <style scoped>
+.fill {
+  width: 100%;
+}
 .wrapper-container {
   display: flex;
   width: 100%;
@@ -187,6 +194,7 @@ h5 {
 .social-icon {
   border-right: 1px solid;
   padding-right: 5px;
+  padding-left: 15px;
 }
 
 .social-label {
