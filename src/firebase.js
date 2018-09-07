@@ -193,12 +193,9 @@ export function signInWithGithub() {
           console.log("token", token);
           console.log("user", user);
           resolve({ user, token });
-
-          // ...
         })
         .catch(function(error) {
           reject(error);
-          // ...
         });
     }
   });
