@@ -12,7 +12,8 @@
           <v-btn 
             class="social twitter" 
             round 
-            block>
+            block 
+            disabled>
             <v-icon class="social-icon" >fab fa-twitter-square</v-icon>
             <span class="social-label">Twitter</span>
             <div class="fill"/>
@@ -21,7 +22,8 @@
           <v-btn 
             class="social facebook" 
             round 
-            block>
+            block 
+            disabled>
             <v-icon class="social-icon">fab fa-facebook-square</v-icon>
             <span class="social-label">Facebook</span>
             <div class="fill"/>
@@ -30,7 +32,8 @@
           <v-btn 
             class="social github" 
             round 
-            block>
+            block 
+            @click="onSignInWithGithub">
             <v-icon class="social-icon" >fab fa-github-square</v-icon>
             <span class="social-label">Github</span>
             <div class="fill"/>
@@ -39,7 +42,8 @@
           <v-btn 
             class="social google" 
             round 
-            block>
+            block 
+            disabled>
             <v-icon class="social-icon" >fab fa-google-plus-square</v-icon>
             <span class="social-label">Google</span>
             <div class="fill"/>
@@ -122,6 +126,10 @@ export default {
         email: this.email,
         password: this.password
       });
+    },
+
+    onSignInWithGithub() {
+      this.$store.dispatch("USER_SIGNIN_GITHUB");
     }
   }
 };

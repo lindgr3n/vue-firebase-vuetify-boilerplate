@@ -1,4 +1,5 @@
 import { signInUser, signupUser, signOutUser, addUser } from "@/firebase";
+import { signInWithGithub } from "../../firebase";
 
 const state = {
   user: null,
@@ -40,6 +41,20 @@ export const actions = {
     const loginPromise = signInUser(payload);
     loginPromise
       .then(user => {
+        commit("USER_UPDATE", { user });
+        commit("USER_SUCCESS");
+      })
+      .catch(error => {
+        commit("USER_ERROR", { message: error.message });
+      });
+  },
+
+  USER_SIGNIN_GITHUB({ commit }) {
+    commit("USER_REQUEST");
+    const loginPromise = signInWithGithub();
+    loginPromise
+      .then(user => {
+        console.log("Wohoo github", user);
         commit("USER_UPDATE", { user });
         commit("USER_SUCCESS");
       })
