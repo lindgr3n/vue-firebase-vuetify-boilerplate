@@ -5,7 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "firebase:login": "firebase login",
+    "firebase:init": "firebase init",
+    "firebase:deploy": "firebase deploy"
   },
   "dependencies": {
     "firebase": "^5.3.1",
@@ -20,6 +23,7 @@
     "@vue/cli-plugin-eslint": "^3.0.0-rc.10",
     "@vue/cli-service": "^3.0.0-rc.10",
     "@vue/eslint-config-prettier": "^3.0.0-rc.10",
+    "firebase-tools": "^4.2.1",
     "vue-template-compiler": "^2.5.16"
   }
 }
