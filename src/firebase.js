@@ -88,8 +88,8 @@ export function signInUser({ email, password }) {
 }
 
 const userModel = ({ user }) => {
-  console.log("found email", user.email);
   return {
+    uid: user.uid,
     firstname: "",
     lastname: "",
     email: user.email
@@ -99,17 +99,20 @@ const userModel = ({ user }) => {
 export function addUser(user) {
   return new Promise((resolve, reject) => {
     // Using Cloud Firestore
-    firebase
+    const createUser = userModel(user);
+    const userDoc = firebase
       .firestore()
       .collection("users")
-      .add(userModel(user))
-      .then(ref => {
-        console.log("Added user", ref);
+      .doc(user.user.uid)
+      .set(createUser, { merge: true });
+
+    userDoc
+      .then(() => {
+        resolve(user);
       })
       .catch(error => {
         reject(error);
       });
-
     // Example using Realtimedatabase
     // firebase
     //   .database()
@@ -123,6 +126,29 @@ export function addUser(user) {
     //   .catch(error => {
     //     reject(error);
     //   });
+  });
+}
+
+export function fetchUser(user) {
+  return new Promise((resolve, reject) => {
+    var userRef = firebase
+      .firestore()
+      .collection("users")
+      .doc(user.uid);
+    userRef
+      .get()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log("No user found!");
+          resolve(null);
+        } else {
+          console.log("Found user:", doc.data());
+          resolve(doc.data());
+        }
+      })
+      .catch(error => {
+        reject(error);
+      });
   });
 }
 
