@@ -21,4 +21,18 @@ yarn run lint
 ```
 
 
+
+## Firebase setup
+TODO tutorial on how to setup in fireconsole
+
+yarn firebase:login
+yarn firebase:init
+Follow steps
+TODO: Add link to guide
+
+yarn build
+yarn firebase:build
+
+## Firebase user db info
+
 Social style from https://lipis.github.io/bootstrap-social/
