@@ -74,12 +74,22 @@ export default {
     };
   },
   computed: {
+    user() {
+      return this.$store.state.user.user;
+    },
     error() {
       return this.$store.state.user.user_error;
     },
 
     loading() {
       return this.$store.state.user.user_request;
+    }
+  },
+  watch: {
+    user(newValue) {
+      if (newValue) {
+        this.$router.replace("/");
+      }
     }
   },
   methods: {
