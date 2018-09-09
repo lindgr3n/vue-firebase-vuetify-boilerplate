@@ -20,8 +20,14 @@ So looking around for a boilerplate the ones i found do to mutch in my meaning. 
 
 
 ## Project setup
-```
+* Set up firebase (See below)
+* (optional) setup Sentry
+* (optional) setup Analytics
+* run following commands 
+
+```bash
 yarn install
+yarn deploy
 ```
 
 ### Compiles and hot-reloads for development
@@ -54,4 +60,5 @@ yarn firebase:build
 
 ## Firebase user db info
 
-Social style from https://lipis.github.io/bootstrap-social/
+Credits
+* Social style from [lipis]( https://lipis.github.io/bootstrap-social/)
