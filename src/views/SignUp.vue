@@ -92,6 +92,11 @@ export default {
       }
     }
   },
+  mounted() {
+    if (this.error) {
+      this.$store.commit("USER_CLEAR_REQUEST");
+    }
+  },
   methods: {
     onSignUp() {
       this.$store.dispatch("USER_SIGNUP", {

@@ -37,6 +37,11 @@ export const mutations = {
     state.user_request = null;
     state.user_success = null;
     state.user_error = message;
+  },
+  USER_CLEAR_REQUEST(state) {
+    state.user_request = null;
+    state.user_success = null;
+    state.user_error = null;
   }
 };
 

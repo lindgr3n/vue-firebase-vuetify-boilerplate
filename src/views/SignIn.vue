@@ -120,6 +120,11 @@ export default {
       }
     }
   },
+  mounted() {
+    if (this.error) {
+      this.$store.commit("USER_CLEAR_REQUEST");
+    }
+  },
   methods: {
     onLogin() {
       this.$store.dispatch("USER_SIGNIN", {
