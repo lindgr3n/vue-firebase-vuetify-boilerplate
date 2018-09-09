@@ -1,4 +1,23 @@
 # vue-firebase-vuetify-boilerplate
+Vue Vuetify Firebase vue-cli
+TOOD: logo
+TODO: pitch Quick start your application
+
+## Why another vue-firebase boilerplate?
+When i get an idea that i want to build i always end up building the foundation login and firebase connection. Alot of time lost instead of just clone -> run -> build! 
+
+So looking around for a boilerplate the ones i found do to mutch in my meaning. I just want a connection to firebase and good to go! And a way for me to learn more about firebase!
+
+## What you get?
+* Signin page
+* Signup page
+* Social logins Twitter, Google, Facebook and Github
+* Connection to Firebase
+* Built using vue-cli!
+* Built on Vuetify
+* TODO: Setup with Sentry 
+* TODO: Setup with Google Analytics
+
 
 ## Project setup
 ```
