@@ -23,7 +23,7 @@
             class="social facebook" 
             round 
             block 
-            disabled>
+            @click="onSignInWithFacebook">
             <v-icon class="social-icon">fab fa-facebook-square</v-icon>
             <span class="social-label">Facebook</span>
             <div class="fill"/>
@@ -135,6 +135,10 @@ export default {
 
     onSignInWithGithub() {
       this.$store.dispatch("USER_SIGNIN_GITHUB");
+    },
+
+    onSignInWithFacebook() {
+      this.$store.dispatch("USER_SIGNIN_FACEBOOK");
     }
   }
 };

@@ -4,7 +4,8 @@ import {
   signOutUser,
   addUser,
   fetchUser,
-  signInWithGithub
+  signInWithGithub,
+  signInWithFacebook
 } from "@/firebase";
 
 const state = {
@@ -64,6 +65,28 @@ export const actions = {
     loginPromise
       .then(user => {
         console.log("Wohoo github", user);
+        const addUserPromise = addUser(user);
+        addUserPromise
+          .then(() => {
+            // TODO: Check if user exist before create?
+            // Could be nice to always add (merge) so we fetch user changes from social login
+            dispatch("USER_FETCH", user);
+          })
+          .catch(error => {
+            commit("USER_ERROR", { message: error.message });
+          });
+      })
+      .catch(error => {
+        commit("USER_ERROR", { message: error.message });
+      });
+  },
+
+  USER_SIGNIN_FACEBOOK({ commit, dispatch }) {
+    commit("USER_REQUEST");
+    const loginPromise = signInWithFacebook();
+    loginPromise
+      .then(user => {
+        console.log("Wohoo facebook", user);
         const addUserPromise = addUser(user);
         addUserPromise
           .then(() => {
