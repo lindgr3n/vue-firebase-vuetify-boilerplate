@@ -134,11 +134,11 @@ export default {
     },
 
     onSignInWithGithub() {
-      this.$store.dispatch("USER_SIGNIN_GITHUB");
+      this.$store.dispatch("USER_SIGNIN_SOCIAL", { provider: "GITHUB" });
     },
 
     onSignInWithFacebook() {
-      this.$store.dispatch("USER_SIGNIN_FACEBOOK");
+      this.$store.dispatch("USER_SIGNIN_SOCIAL", { provider: "FACEBOOK" });
     }
   }
 };

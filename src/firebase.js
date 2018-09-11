@@ -92,7 +92,8 @@ const userModel = ({ user }) => {
     uid: user.uid,
     firstname: "",
     lastname: "",
-    email: user.email
+    email: user.email,
+    provider: ""
   };
 };
 
@@ -171,71 +172,27 @@ export function signOutUser() {
 Social logins
 ******************/
 
-export function signInWithGithub() {
-  // TODO: Validate the type of device redirect is preffered on mobile
-  return new Promise((resolve, reject) => {
-    const useMobileLogin = false;
-    var provider = new firebase.auth.GithubAuthProvider();
-    console.log("provider", provider);
-
-    if (useMobileLogin) {
-      firebase.auth().signInWithRedirect(provider);
-      firebase
-        .auth()
-        .getRedirectResult()
-        .then(function(result) {
-          if (result.credential) {
-            // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-            var token = result.credential.accessToken;
-            // ...
-          }
-          // The signed-in user info.
-          var user = result.user;
-          console.log("token", token);
-          console.log("user", user);
-          resolve({ user, token });
-        })
-        .catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // The email of the user's account used.
-          var email = error.email;
-          // The firebase.auth.AuthCredential type that was used.
-          var credential = error.credential;
-          console.error({ errorCode, errorMessage, email, credential });
-          reject({ errorCode, errorMessage, email, credential });
-          // ...
-        });
-    } else {
-      firebase
-        .auth()
-        .signInWithPopup(provider)
-        .then(function(result) {
-          // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-          var token = result.credential.accessToken;
-          // The signed-in user info.
-          var user = result.user;
-          console.log("token", token);
-          console.log("user", user);
-          resolve({ user, token });
-        })
-        .catch(function(error) {
-          reject(error);
-        });
-    }
-  });
+function getProvider({ provider }) {
+  switch (provider) {
+    case "GITHUB":
+      return new firebase.auth.GithubAuthProvider();
+    case "FACEBOOK":
+      return new firebase.auth.FacebookAuthProvider();
+    default:
+      console.error(`No provider found for ${provider}`);
+      break;
+  }
 }
 
-export function signInWithFacebook() {
+export function signInWithSocial({ provider }) {
   // TODO: Validate the type of device redirect is preffered on mobile
   return new Promise((resolve, reject) => {
     const useMobileLogin = false;
-    var provider = new firebase.auth.FacebookAuthProvider();
+    var firebaseProvider = getProvider({ provider });
     console.log("provider", provider);
 
     if (useMobileLogin) {
-      firebase.auth().signInWithRedirect(provider);
+      firebase.auth().signInWithRedirect(firebaseProvider);
       firebase
         .auth()
         .getRedirectResult()
@@ -266,7 +223,7 @@ export function signInWithFacebook() {
     } else {
       firebase
         .auth()
-        .signInWithPopup(provider)
+        .signInWithPopup(firebaseProvider)
         .then(function(result) {
           // This gives you a GitHub Access Token. You can use it to access the GitHub API.
           var token = result.credential.accessToken;
