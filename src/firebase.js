@@ -88,13 +88,9 @@ export function signInUser({ email, password }) {
 }
 
 const userModel = ({ user }) => {
-  return {
-    uid: user.uid,
-    firstname: "",
-    lastname: "",
-    email: user.email,
-    provider: ""
-  };
+  const provider = user.providerData[0].providerId;
+  const { uid, displayName, email, phoneNumber, photoURL } = user;
+  return { uid, displayName, email, phoneNumber, photoURL, provider };
 };
 
 export function addUser(user) {
