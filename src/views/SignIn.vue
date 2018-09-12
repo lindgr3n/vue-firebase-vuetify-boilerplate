@@ -157,7 +157,10 @@ export default {
     },
 
     onSignInWithSocial(provider) {
-      this.$store.dispatch("USER_SIGNIN_SOCIAL", { provider });
+      this.$store.dispatch("USER_SIGNIN_SOCIAL", {
+        provider,
+        isMobile: this.isMobile
+      });
     }
   }
 };

@@ -184,10 +184,10 @@ function getProvider({ provider }) {
   }
 }
 
-export function signInWithSocial({ provider }) {
+export function signInWithSocial({ provider, isMobile = false }) {
   // TODO: Validate the type of device redirect is preffered on mobile
   return new Promise((resolve, reject) => {
-    const useMobileLogin = false;
+    const useMobileLogin = isMobile;
     var firebaseProvider = getProvider({ provider });
 
     if (useMobileLogin) {
