@@ -176,6 +176,8 @@ function getProvider({ provider }) {
       return new firebase.auth.FacebookAuthProvider();
     case "TWITTER":
       return new firebase.auth.TwitterAuthProvider();
+    case "GOOGLE":
+      return new firebase.auth.GoogleAuthProvider();
     default:
       console.error(`No provider found for ${provider}`);
       break;
