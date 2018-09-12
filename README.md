@@ -4,9 +4,10 @@ TOOD: logo
 TODO: pitch Quick start your application
 
 ## Why another vue-firebase boilerplate?
-When i get an idea that i want to build i always end up building the foundation login and firebase connection. Alot of time lost instead of just clone -> run -> build! 
+When i get an idea that i want to build i always end up building the foundation - login and firebase connection. Alot of time lost instead of just clone -> run -> build! 
 
-So looking around for a boilerplate the ones i found do to mutch in my meaning. I just want a connection to firebase and good to go! And a way for me to learn more about firebase!
+So looking around for a boilerplate the ones i found do to mutch in my meaning. I just want a connection to firebase and good to go! So why not just create one myself. Good way to learn more about firebase!
+Also i wanted a boilerplate that was build ontop of vue-cli.
 
 ## What you get?
 * Signin page
@@ -32,19 +33,23 @@ yarn deploy
 
 ### Compiles and hot-reloads for development
 ```
-yarn run serve
+yarn serve
 ```
 
 ### Compiles and minifies for production
 ```
-yarn run build
+yarn build
 ```
 
 ### Lints and fixes files
 ```
-yarn run lint
+yarn lint
 ```
 
+### Compiles and minifies for production and deploys to firebase
+```
+yarn deploy
+```
 
 
 ## Firebase setup
@@ -61,4 +66,8 @@ yarn firebase:build
 ## Firebase user db info
 
 Credits
-* Social style from [lipis]( https://lipis.github.io/bootstrap-social/)
+* Vue
+* Vue-cli
+* Vuetify
+* Firebase
+* Social style (colors) from [lipis]( https://lipis.github.io/bootstrap-social/)
