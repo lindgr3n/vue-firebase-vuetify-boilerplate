@@ -189,7 +189,6 @@ export function signInWithSocial({ provider }) {
   return new Promise((resolve, reject) => {
     const useMobileLogin = false;
     var firebaseProvider = getProvider({ provider });
-    console.log("provider", provider);
 
     if (useMobileLogin) {
       firebase.auth().signInWithRedirect(firebaseProvider);
@@ -204,8 +203,6 @@ export function signInWithSocial({ provider }) {
           }
           // The signed-in user info.
           var user = result.user;
-          console.log("token", token);
-          console.log("user", user);
           resolve({ user, token });
         })
         .catch(function(error) {
@@ -218,7 +215,6 @@ export function signInWithSocial({ provider }) {
           var credential = error.credential;
           console.error({ errorCode, errorMessage, email, credential });
           reject({ errorCode, errorMessage, email, credential });
-          // ...
         });
     } else {
       firebase
@@ -229,8 +225,6 @@ export function signInWithSocial({ provider }) {
           var token = result.credential.accessToken;
           // The signed-in user info.
           var user = result.user;
-          console.log("token", token);
-          console.log("user", user);
           resolve({ user, token });
         })
         .catch(function(error) {
