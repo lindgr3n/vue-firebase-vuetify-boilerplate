@@ -10,43 +10,63 @@
       <div class="wrapper-content">
         <div class="wrapper-social">
           <v-btn 
-            class="social twitter" 
-            round 
-            block 
-            disabled>
-            <v-icon class="social-icon" >fab fa-twitter-square</v-icon>
-            <span class="social-label">Twitter</span>
-            <div class="fill"/>
+            :class="{social: !isMobile, twitter: true}"
+            :icon="isMobile" 
+            :round="!isMobile"
+            :block="!isMobile" 
+            @click="onSignInWithSocial('TWITTER')">
+            <v-icon :class="{'social-icon': !isMobile}" >fab fa-twitter-square</v-icon>
+            <span 
+              v-if="!isMobile" 
+              class="social-label">Twitter</span>
+            <div 
+              v-if="!isMobile" 
+              class="fill"/>
           </v-btn>
           <br >
           <v-btn 
-            class="social facebook" 
-            round 
-            block 
-            @click="onSignInWithFacebook">
-            <v-icon class="social-icon">fab fa-facebook-square</v-icon>
-            <span class="social-label">Facebook</span>
-            <div class="fill"/>
+            :class="{social: !isMobile, facebook: true}"
+            :icon="isMobile" 
+            :round="!isMobile"
+            :block="!isMobile" 
+            @click="onSignInWithSocial('FACEBOOK')">
+            <v-icon :class="{'social-icon': !isMobile}">fab fa-facebook-square</v-icon>
+            <span 
+              v-if="!isMobile" 
+              class="social-label">Facebook</span>
+            <div 
+              v-if="!isMobile" 
+              class="fill"/>
           </v-btn>
           <br >
           <v-btn 
-            class="social github" 
-            round 
-            block 
-            @click="onSignInWithGithub">
-            <v-icon class="social-icon" >fab fa-github-square</v-icon>
-            <span class="social-label">Github</span>
-            <div class="fill"/>
+            :class="{social: !isMobile, github: true}"
+            :icon="isMobile" 
+            :round="!isMobile"
+            :block="!isMobile" 
+            @click="onSignInWithSocial('GITHUB')">
+            <v-icon :class="{'social-icon': !isMobile}" >fab fa-github-square</v-icon>
+            <span 
+              v-if="!isMobile" 
+              class="social-label">Github</span>
+            <div 
+              v-if="!isMobile" 
+              class="fill"/>
           </v-btn>
           <br >
           <v-btn 
-            class="social google" 
-            round 
-            block 
-            disabled>
-            <v-icon class="social-icon" >fab fa-google-plus-square</v-icon>
-            <span class="social-label">Google</span>
-            <div class="fill"/>
+            :class="{social: !isMobile, google: true}"
+            :icon="isMobile" 
+            :round="!isMobile"
+            :block="!isMobile" 
+            @click="onSignInWithSocial('GOOGLE')">
+            <v-icon :class="{'social-icon': !isMobile}" >fab fa-google-plus-square</v-icon>
+            <span 
+              v-if="!isMobile" 
+              class="social-label">Google</span>
+            <div 
+              v-if="!isMobile" 
+              class="fill"/>
           </v-btn>
         </div>
         <div class="wrapper">
@@ -111,6 +131,9 @@ export default {
 
     loading() {
       return this.$store.state.user.user_request;
+    },
+    isMobile() {
+      return this.$vuetify.breakpoint.name === "xs";
     }
   },
   watch: {
@@ -133,12 +156,8 @@ export default {
       });
     },
 
-    onSignInWithGithub() {
-      this.$store.dispatch("USER_SIGNIN_SOCIAL", { provider: "GITHUB" });
-    },
-
-    onSignInWithFacebook() {
-      this.$store.dispatch("USER_SIGNIN_SOCIAL", { provider: "FACEBOOK" });
+    onSignInWithSocial(provider) {
+      this.$store.dispatch("USER_SIGNIN_SOCIAL", { provider });
     }
   }
 };
