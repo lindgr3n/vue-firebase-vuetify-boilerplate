@@ -174,6 +174,8 @@ function getProvider({ provider }) {
       return new firebase.auth.GithubAuthProvider();
     case "FACEBOOK":
       return new firebase.auth.FacebookAuthProvider();
+    case "TWITTER":
+      return new firebase.auth.TwitterAuthProvider();
     default:
       console.error(`No provider found for ${provider}`);
       break;
@@ -194,7 +196,7 @@ export function signInWithSocial({ provider }) {
         .getRedirectResult()
         .then(function(result) {
           if (result.credential) {
-            // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+            // This gives you a Access Token. You can use it to access the API.
             var token = result.credential.accessToken;
             // ...
           }
@@ -221,7 +223,7 @@ export function signInWithSocial({ provider }) {
         .auth()
         .signInWithPopup(firebaseProvider)
         .then(function(result) {
-          // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+          // This gives you a Access Token. You can use it to access the API.
           var token = result.credential.accessToken;
           // The signed-in user info.
           var user = result.user;
