@@ -33,12 +33,10 @@ export function onAuthenticationChanged() {
   return new Promise((resolve, reject) => {
     firebase.auth().onAuthStateChanged(
       user => {
-        console.log("Authentication changed: ", user);
         resolve(user);
         return;
       },
       error => {
-        console.error("Authentication error: ", error);
         reject(error);
       }
     );
@@ -56,12 +54,10 @@ export function signupUser({ email, password }) {
       .createUserWithEmailAndPassword(email, password);
     createdUser
       .then(user => {
-        console.log("Created user: ", user);
         resolve(user);
         return;
       })
       .catch(error => {
-        console.error("Failed to create user: ", error);
         reject(error);
       });
   });
@@ -74,14 +70,10 @@ export function signInUser({ email, password }) {
       .signInWithEmailAndPassword(email, password);
     authenticatedUser
       .then(user => {
-        console.log("Login successfull! ", user);
-
         resolve(user);
         return;
       })
       .catch(error => {
-        console.error("Fail to login user: ", error);
-
         reject(error);
       });
   });
@@ -136,10 +128,8 @@ export function fetchUser(user) {
       .get()
       .then(doc => {
         if (!doc.exists) {
-          console.log("No user found!");
           resolve(null);
         } else {
-          console.log("Found user:", doc.data());
           resolve(doc.data());
         }
       })
@@ -179,7 +169,7 @@ function getProvider({ provider }) {
     case "GOOGLE":
       return new firebase.auth.GoogleAuthProvider();
     default:
-      console.error(`No provider found for ${provider}`);
+      console.error(`No provider found for ${provider}`); // eslint-disable-line
       break;
   }
 }
@@ -213,7 +203,6 @@ export function signInWithSocial({ provider, isMobile = false }) {
           var email = error.email;
           // The firebase.auth.AuthCredential type that was used.
           var credential = error.credential;
-          console.error({ errorCode, errorMessage, email, credential });
           reject({ errorCode, errorMessage, email, credential });
         });
     } else {

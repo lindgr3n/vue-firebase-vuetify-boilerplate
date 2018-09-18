@@ -28,8 +28,6 @@ new Vue({
   created() {
     onAuthenticationChanged().then(user => {
       if (user) {
-        console.log("Auth changed found user", user);
-
         this.$store.dispatch("USER_FETCH", { user });
         this.$router.push("/");
       } else {

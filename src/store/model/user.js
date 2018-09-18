@@ -63,7 +63,6 @@ export const actions = {
     const loginPromise = signInWithSocial({ provider });
     loginPromise
       .then(user => {
-        console.log("Wohoo github", user);
         user.provider = provider;
         const addUserPromise = addUser(user);
         addUserPromise

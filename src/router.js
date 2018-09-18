@@ -51,8 +51,6 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   const currentUser = getUser();
-  console.log("Found user", currentUser);
-  console.log("Requires auth", requiresAuth);
   if (!requiresAuth) {
     next();
   } else if (requiresAuth && !currentUser) {
