@@ -5,7 +5,8 @@ Up and running with <a href="https://vuejs.org/" target="_blank" rel="noopener n
 <p align="center">
 <a href="https://github.com/lindgr3n/vue-firebase-vuetify-boilerplate" target="_blank" rel="noopener noreferrer"><img width="256" src="./assets/VueRocket.png" alt="Vue Rocket"></a></p>
 
-
+## Demo
+https://vue-firebase-boilerplate.firebaseapp.com/
 
 ## Why another Vue Firebase boilerplate?
 When i get an idea i want to build i always end up building the foundation - login and firebase connection. Alot of time lost instead of just clone -> run -> build! 
@@ -24,7 +25,6 @@ Also i wanted a boilerplate that was build ontop of vue-cli and preconfigured wi
 * Built with Vuetify
 * Setup with Sentry
 * TODO: Setup with Google Analytics Do we want this?
-
 
 ## Project setup
 * Set up firebase (See below)
@@ -83,8 +83,8 @@ phoneNumber: ""
 photoURL: ""
 provider: ""
 uid: ""
-
 ```
+This information only exist if user log in using social. For ordinary email login only email is stored.
 
 ## Raven setup
 Login to [Sentry](https://sentry.io) (create an account if you dont have one). Set up your project.
@@ -95,6 +95,12 @@ Install raven module
 `yarn add raven-js`
 Update `.env.local` with your api key you get from Sentry.
 `VUE_APP_RAVENKEY=MY_SECRET_KEY_FROM_SENTRY`
+
+## Contributing
+Please! Feel free to create an issue or push up an PR with changes you feel is needed.
+
+## Roadmap
+Todo
 
 ## Credits
 * [Vue](https://vuejs.org/)
