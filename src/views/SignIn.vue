@@ -186,9 +186,6 @@ export default {
   padding: 2em;
 }
 
-.wrapper-social {
-}
-
 .wrapper-form {
   flex: 3;
 }
