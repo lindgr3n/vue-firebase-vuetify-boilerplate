@@ -1,5 +1,7 @@
 import Vue from "vue";
 import Vuetify from "vuetify";
+import Raven from "raven-js";
+import RavenVue from "raven-js/plugins/vue";
 import "vuetify/dist/vuetify.min.css";
 import "material-design-icons-iconfont/dist/material-design-icons.css";
 import App from "./App.vue";
@@ -10,6 +12,12 @@ import firebase, { onAuthenticationChanged } from "./firebase";
 Vue.config.productionTip = false;
 
 Vue.use(Vuetify);
+
+if (process.env.NODE_ENV === "production" && process.env.VUE_APP_RAVENKEY) {
+  Raven.config(process.env.VUE_APP_RAVENKEY)
+    .addPlugin(RavenVue, Vue)
+    .install();
+}
 
 new Vue({
   router,
@@ -27,7 +35,6 @@ new Vue({
       } else {
         this.$router.push("/sign-in");
       }
-      // this.$store.commit("setAppState", { type: "success" });
     });
   },
   render: h => h(App)

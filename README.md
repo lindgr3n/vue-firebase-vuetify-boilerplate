@@ -14,9 +14,9 @@ Also i wanted a boilerplate that was build ontop of vue-cli.
 * Signup page
 * Social logins Twitter, Google, Facebook and Github
 * Connection to Firebase
-* Built using vue-cli!
-* Built on Vuetify
-* TODO: Setup with Sentry 
+* Built based on vue-cli!
+* Built with Vuetify
+* Setup with Sentry
 * TODO: Setup with Google Analytics
 
 
@@ -65,7 +65,16 @@ yarn firebase:build
 
 ## Firebase user db info
 
-Credits
+## Raven setup
+Login to [Sentry](https://sentry.io) (create an account if you dont have one). Set up your project.
+TODO: Tutorial on how to setup sentry
+
+Install raven module
+`yarn add raven-js`
+Update `.env.local` with your api key you get from Sentry.
+`VUE_APP_RAVENKEY=MY_SECRET_KEY_FROM_SENTRY`
+
+## Credits
 * Vue
 * Vue-cli
 * Vuetify
