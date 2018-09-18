@@ -1,6 +1,14 @@
 {
   "name": "vue-firebase-vuetify-boilerplate",
+  "description": "Up and running with Vue, Vuetify and Firebase",
   "version": "0.1.0",
+  "license": "SEE LICENSE IN LICENSE",
+  "author": {
+    "name": "Johan Lindgren"
+  },
+  "bugs": {
+    "url": "https://github.com/lindgr3n/vue-firebase-vuetify-boilerplate/issues"
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
