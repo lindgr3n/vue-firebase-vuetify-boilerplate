@@ -11,11 +11,11 @@
         <span class="title">Awesome application!</span>
       </v-toolbar-title>
       <v-spacer/>
-      <div id="nav">
+      <div 
+        v-if="user" 
+        id="nav">
         <router-link to="/">Home</router-link> |
         <router-link to="/about">About</router-link> |
-        <router-link to="/sign-in">Sign in</router-link> |
-        <router-link to="/sign-up">Sign up</router-link> |
         <button @click="onLogOut">Logout</button>
       </div>
     </v-toolbar>
@@ -33,6 +33,11 @@
 
 <script>
 export default {
+  computed: {
+    user() {
+      return this.$store.state.user.user;
+    }
+  },
   methods: {
     onLogOut() {
       this.$store.dispatch("USER_SIGNOUT");
