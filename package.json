@@ -9,6 +9,9 @@
   "bugs": {
     "url": "https://github.com/lindgr3n/vue-firebase-vuetify-boilerplate/issues"
   },
+  "keywords": [
+    "Vue", "Vuetify", "Firebase", "vue-cli", "Cloud Firestore"
+  ],
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
