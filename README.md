@@ -10,12 +10,12 @@ Up and running with <a href="https://vuejs.org/" target="_blank" rel="noopener n
 https://vue-firebase-boilerplate.firebaseapp.com/
 
 ## Why another Vue Firebase boilerplate?
-When i get an idea i want to build i always end up building the foundation - login and firebase connection. Alot of time lost instead of just clone -> run -> build! 
+When i get an idea i want to build i always end up building the foundation - login and firebase connection. Time lost instead of just clone -> run -> build! 
 
-So looking around for a boilerplate the ones i found do to mutch for the small applications i want to test out. I just want a connection to firebase and good to go! 
+So looking around for a boilerplate. The ones i found do to much for the small applications i want to test out. I just want a connection to firebase and good to go! 
 
-So why not just create one myself. Good way to learn more about firebase!
-Also i wanted a boilerplate that was build ontop of vue-cli and preconfigured with Vuetify!
+So why not just create one myself? Good way to learn more about firebase!
+Also i wanted a boilerplate that was built on top of vue-cli and preconfigured with Vuetify!
 
 ## What you get?
 * Signin page
@@ -110,11 +110,11 @@ Get a firebase deploy key using
 
 Inside CircleCI on you projects setting page add Enviroment Variables. Matching your local env file.
 ```
-FIREBASE_DEPLOY_TOKEN	xxxx2ojq	
-VUE_APP_FIREBASE_KEY	xxxxlXuk	
-VUE_APP_FIREBASE_MESSAGESENDERID  xxxx4981	
-VUE_APP_FIREBASE_PROJECTID	xxxxired	
-VUE_APP_RAVENKEY  xxxx3200
+FIREBASE_DEPLOY_TOKEN	xxxx3ojq	
+VUE_APP_FIREBASE_KEY	xxxxaXuk	
+VUE_APP_FIREBASE_MESSAGESENDERID  xxxx5981	
+VUE_APP_FIREBASE_PROJECTID	xxxxlate	
+VUE_APP_RAVENKEY  xxxx1200
 ```
 
 ## Contributing
