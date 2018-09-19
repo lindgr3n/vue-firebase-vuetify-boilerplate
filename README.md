@@ -1,4 +1,5 @@
 # Vue Firebase Vuetify Boilerplate
+[![CircleCI](https://circleci.com/gh/lindgr3n/vue-firebase-vuetify-boilerplate/tree/master.svg?style=svg)](https://circleci.com/gh/lindgr3n/vue-firebase-vuetify-boilerplate/tree/master)
 
 <p align="center">
 Up and running with <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">Vue</a>, <a href="https://vuetifyjs.com" target="_blank" rel="noopener noreferrer">Vuetify</a> and <a href="https://firebase.google.com/" target="_blank" rel="noopener noreferrer">Firebase</a> the rocket way!</p>
