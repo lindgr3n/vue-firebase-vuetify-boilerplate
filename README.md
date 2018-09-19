@@ -31,6 +31,7 @@ Also i wanted a boilerplate that was build ontop of vue-cli and preconfigured wi
 * Set up firebase (See below)
 * (optional) setup Sentry (See below)
 * (optional) setup Analytics (Todo)
+* (optional) setup CircleCI (See below)
 * run following commands 
 
 ```bash
@@ -96,6 +97,11 @@ Install raven module
 `yarn add raven-js`
 Update `.env.local` with your api key you get from Sentry.
 `VUE_APP_RAVENKEY=MY_SECRET_KEY_FROM_SENTRY`
+
+## CircleCI setup
+Pretty easy to get going, login to CircleCI and add your project :)
+
+Good guide here [learn-cicleci](https://github.com/dwyl/learn-circleci) for more infomation!
 
 ## Contributing
 Please! Feel free to create an issue or push up an PR with changes you feel is needed.
