@@ -104,6 +104,19 @@ Pretty easy to get going, login to CircleCI and add your project :)
 
 Good guide here [learn-cicleci](https://github.com/dwyl/learn-circleci) for more infomation!
 
+For deployment to work you need to do the following:
+Get a firebase deploy key using
+`firebase login:ci` login with you google account.
+
+Inside CircleCI on you projects setting page add Enviroment Variables. Matching your local env file.
+```
+FIREBASE_DEPLOY_TOKEN	xxxx2ojq	
+VUE_APP_FIREBASE_KEY	xxxxlXuk	
+VUE_APP_FIREBASE_MESSAGESENDERID  xxxx4981	
+VUE_APP_FIREBASE_PROJECTID	xxxxired	
+VUE_APP_RAVENKEY  xxxx3200
+```
+
 ## Contributing
 Please! Feel free to create an issue or push up an PR with changes you feel is needed.
 
