@@ -19,6 +19,7 @@ Also i wanted a boilerplate that was build ontop of vue-cli and preconfigured wi
 ## What you get?
 * Signin page
 * Signup page
+* Display stored user data
 * Social logins Twitter, Google, Facebook and Github
 * Connection to Firebase using Cloud Firestore
 * Built based on vue-cli
