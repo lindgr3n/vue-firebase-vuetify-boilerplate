@@ -17,7 +17,7 @@
         <router-link to="/">Home</router-link> |
         <router-link to="/about">About</router-link>
       </div>
-      <user-settings />
+      <user-settings v-if="user" />
     </v-toolbar>
     <v-content>
       <v-layout 
