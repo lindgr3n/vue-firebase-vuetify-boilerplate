@@ -15,9 +15,9 @@
         v-if="user" 
         id="nav">
         <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link> |
-        <button @click="onLogOut">Logout</button>
+        <router-link to="/about">About</router-link>
       </div>
+      <user-settings />
     </v-toolbar>
     <v-content>
       <v-layout 
@@ -32,16 +32,15 @@
 </template>
 
 <script>
+import UserSettings from "@/components/UserSettings";
 export default {
+  components: {
+    UserSettings
+  },
+
   computed: {
     user() {
       return this.$store.state.user.user;
-    }
-  },
-  methods: {
-    onLogOut() {
-      this.$store.dispatch("USER_SIGNOUT");
-      this.$router.replace("sign-in");
     }
   }
 };
