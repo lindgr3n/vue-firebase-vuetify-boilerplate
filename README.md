@@ -117,6 +117,47 @@ VUE_APP_FIREBASE_PROJECTID	xxxxlate
 VUE_APP_RAVENKEY  xxxx1200
 ```
 
+## Implement in existing project
+If you already have a project you want to connect. 
+
+Quickest way you 
+* clone this repo 
+* copy your src files over from your other project. (Make sure you dont override any needed functionality from this repo).
+* Update package.json with your name, urls and custom dependencies
+* create .env.local update with needed parameters
+* remove node_modules
+* run `yarn` or `npm install`
+* Setup firebase (se above)
+* 
+
+If you want to keep your other project
+* Make sure you git commit all your changes in your project
+* Copy following from this repo to your project
+```
+.cicleci
+.firebase
+public/
+src/
+.browserlistrc
+.eslintrc.js
+.firebaserc
+.gitignore
+.postcssrc.js
+babel.config.js
+database.rules.json
+firebase.json
+package.json
+vue.config.js
+```
+* create .env.local update with needed parameters
+* update .firebaserc matching you firebase project
+* remove node_modules/
+* remove your `yarn.lock` or `package.lock`
+* run `yarn` or `npm install`
+* Check all git changes
+* `yarn serve` 
+
+
 ## Contributing
 Please! Feel free to create an issue or push up an PR with changes you feel is needed.
 
