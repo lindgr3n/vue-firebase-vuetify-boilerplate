@@ -14,9 +14,9 @@ const state = {
   user_error: null
 };
 
-export const getters = {};
+const getters = {};
 
-export const mutations = {
+const mutations = {
   USER_UPDATE(state, { user }) {
     state.user = user;
   },
@@ -45,7 +45,7 @@ export const mutations = {
   }
 };
 
-export const actions = {
+const actions = {
   USER_SIGNIN({ commit, dispatch }, payload) {
     commit("USER_REQUEST");
     const loginPromise = signInUser(payload);
