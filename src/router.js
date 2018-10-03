@@ -52,7 +52,7 @@ const router = new Router({
         requiresAuth: true
       },
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/UserData.vue")
+        import(/* webpackChunkName: "user-data" */ "./views/UserData.vue")
     }
   ]
 });
