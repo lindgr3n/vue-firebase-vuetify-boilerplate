@@ -1,112 +1,106 @@
 <template>
   <div class="wrapper-container">
     <v-card class="elevation-12">
-      <v-toolbar 
-        dark 
-        color="primary">
+      <v-toolbar dark color="primary">
         <v-toolbar-title>Login</v-toolbar-title>
-        <v-spacer/>
+        <v-spacer />
       </v-toolbar>
       <div class="wrapper-content">
         <div class="wrapper-social">
-          <v-btn 
-            :class="{social: !isMobile, twitter: true}"
-            :icon="isMobile" 
-            :round="!isMobile"
-            :block="!isMobile" 
-            @click="onSignInWithSocial('TWITTER')">
-            <v-icon :class="{'social-icon': !isMobile}" >fab fa-twitter-square</v-icon>
-            <span 
-              v-if="!isMobile" 
-              class="social-label">Twitter</span>
-            <div 
-              v-if="!isMobile" 
-              class="fill"/>
+          <v-btn
+            :class="{ social: !isMobile, twitter: true }"
+            :icon="isMobile"
+            :rounded="!isMobile"
+            :block="!isMobile"
+            @click="onSignInWithSocial('TWITTER')"
+          >
+            <v-icon :class="{ 'social-icon': !isMobile }"
+              >fab fa-twitter-square</v-icon
+            >
+            <span v-if="!isMobile" class="social-label">Twitter</span>
+            <div v-if="!isMobile" class="fill" />
           </v-btn>
-          <br >
-          <v-btn 
-            :class="{social: !isMobile, facebook: true}"
-            :icon="isMobile" 
-            :round="!isMobile"
-            :block="!isMobile" 
-            @click="onSignInWithSocial('FACEBOOK')">
-            <v-icon :class="{'social-icon': !isMobile}">fab fa-facebook-square</v-icon>
-            <span 
-              v-if="!isMobile" 
-              class="social-label">Facebook</span>
-            <div 
-              v-if="!isMobile" 
-              class="fill"/>
+          <br />
+          <v-btn
+            :class="{ social: !isMobile, facebook: true }"
+            :icon="isMobile"
+            :rounded="!isMobile"
+            :block="!isMobile"
+            @click="onSignInWithSocial('FACEBOOK')"
+          >
+            <v-icon :class="{ 'social-icon': !isMobile }"
+              >fab fa-facebook-square</v-icon
+            >
+            <span v-if="!isMobile" class="social-label">Facebook</span>
+            <div v-if="!isMobile" class="fill" />
           </v-btn>
-          <br >
-          <v-btn 
-            :class="{social: !isMobile, github: true}"
-            :icon="isMobile" 
-            :round="!isMobile"
-            :block="!isMobile" 
-            @click="onSignInWithSocial('GITHUB')">
-            <v-icon :class="{'social-icon': !isMobile}" >fab fa-github-square</v-icon>
-            <span 
-              v-if="!isMobile" 
-              class="social-label">Github</span>
-            <div 
-              v-if="!isMobile" 
-              class="fill"/>
+          <br />
+          <v-btn
+            :class="{ social: !isMobile, github: true }"
+            :icon="isMobile"
+            :rounded="!isMobile"
+            :block="!isMobile"
+            @click="onSignInWithSocial('GITHUB')"
+          >
+            <v-icon :class="{ 'social-icon': !isMobile }"
+              >fab fa-github-square</v-icon
+            >
+            <span v-if="!isMobile" class="social-label">Github</span>
+            <div v-if="!isMobile" class="fill" />
           </v-btn>
-          <br >
-          <v-btn 
-            :class="{social: !isMobile, google: true}"
-            :icon="isMobile" 
-            :round="!isMobile"
-            :block="!isMobile" 
-            @click="onSignInWithSocial('GOOGLE')">
-            <v-icon :class="{'social-icon': !isMobile}" >fab fa-google-plus-square</v-icon>
-            <span 
-              v-if="!isMobile" 
-              class="social-label">Google</span>
-            <div 
-              v-if="!isMobile" 
-              class="fill"/>
+          <br />
+          <v-btn
+            :class="{ social: !isMobile, google: true }"
+            :icon="isMobile"
+            :rounded="!isMobile"
+            :block="!isMobile"
+            @click="onSignInWithSocial('GOOGLE')"
+          >
+            <v-icon :class="{ 'social-icon': !isMobile }"
+              >fab fa-google-plus-square</v-icon
+            >
+            <span v-if="!isMobile" class="social-label">Google</span>
+            <div v-if="!isMobile" class="fill" />
           </v-btn>
         </div>
         <div class="wrapper">
-          <div 
-            class="vertical-line" 
-            color="primary"/> 
+          <div class="vertical-line" color="primary" />
           <div class="circle">
             <h5>OR</h5>
           </div>
-          <div class="vertical-line"/> 
+          <div class="vertical-line" />
         </div>
         <div class="wrapper-form">
           <v-form>
-            <v-text-field 
-              v-model="email" 
-              prepend-icon="mail" 
-              name="login" 
-              label="Login" 
-              type="text"/>
-            <v-text-field 
-              v-model="password" 
-              prepend-icon="lock" 
-              name="password" 
-              label="Password" 
-              type="password"/>
+            <v-text-field
+              v-model="email"
+              prepend-icon="mdi-mail"
+              name="login"
+              label="Login"
+              type="text"
+            />
+            <v-text-field
+              v-model="password"
+              prepend-icon="mdi-lock"
+              name="password"
+              label="Password"
+              type="password"
+            />
           </v-form>
-          <v-alert
-            :value="error"
-            type="error"
-          >
+          <v-alert :value="hasError" type="error">
             {{ error }}
           </v-alert>
-          <v-spacer/>
+          <v-spacer />
           <v-layout column>
-            <v-btn 
-              :loading="loading" 
-              color="primary"
-              @click="onLogin">Login</v-btn>
-            <p>Don't got an account? Signup here <router-link to="/sign-up">Signup</router-link></p>
-        </v-layout></div>
+            <v-btn :loading="loading" color="primary" @click="onLogin"
+              >Login</v-btn
+            >
+            <p>
+              Don't got an account? Signup here
+              <router-link to="/sign-up">Signup</router-link>
+            </p>
+          </v-layout>
+        </div>
       </div>
     </v-card>
   </div>
@@ -134,6 +128,9 @@ export default {
     },
     isMobile() {
       return this.$vuetify.breakpoint.name === "xs";
+    },
+    hasError() {
+      return !!this.$store.state.user.user_error;
     }
   },
   watch: {

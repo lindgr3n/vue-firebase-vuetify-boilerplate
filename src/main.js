@@ -1,37 +1,38 @@
 import Vue from "vue";
-import Vuetify from "vuetify";
-import Raven from "raven-js";
-import RavenVue from "raven-js/plugins/vue";
-import "vuetify/dist/vuetify.min.css";
-import "material-design-icons-iconfont/dist/material-design-icons.css";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import vuetify from "./plugins/vuetify";
+import * as Sentry from "@sentry/browser";
+import * as Integrations from "@sentry/integrations";
 import firebase, { onAuthenticationChanged } from "./firebase";
 
 Vue.config.productionTip = false;
 
-Vue.use(Vuetify);
-
-if (process.env.NODE_ENV === "production" && process.env.VUE_APP_RAVENKEY) {
-  Raven.config(process.env.VUE_APP_RAVENKEY)
-    .addPlugin(RavenVue, Vue)
-    .install();
+if (process.env.NODE_ENV === "production" && process.env.VUE_APP_SENTRYEY) {
+  Sentry.init({
+    dsn: process.env.VUE_APP_SENTRYKEY,
+    integrations: [new Integrations.Vue({ Vue, attachProps: true })]
+  });
 }
 
 new Vue({
   router,
   store,
+  vuetify,
   data: {
     firebase
   },
   created() {
     onAuthenticationChanged().then(user => {
+      this.$store.commit("USER_LOADING", false);
       if (user) {
         this.$store.dispatch("USER_FETCH", { user });
         this.$router.push("/");
       } else {
-        this.$router.push("/sign-in");
+        if (this.$route.name !== "SignIn") {
+          this.$router.push("/sign-in");
+        }
       }
     });
   },

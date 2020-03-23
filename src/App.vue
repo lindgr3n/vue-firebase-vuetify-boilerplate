@@ -1,51 +1,54 @@
 <template>
   <v-app>
-    <v-toolbar
-      color="primary"
-      dense
-      fixed
-      clipped-left
-      app
-    >
+    <v-app-bar color="primary" dense fixed clipped-left app>
       <v-toolbar-title class="mr-5 align-center">
-        <span class="title">Awesome application!</span>
+        <span class="title">Build something great!</span>
       </v-toolbar-title>
-      <v-spacer/>
-      <div 
-        v-if="user" 
-        id="nav">
+      <v-spacer />
+      <div v-if="user" id="nav">
         <router-link to="/">Home</router-link> |
         <router-link to="/about">About</router-link>
       </div>
       <user-settings v-if="user" />
-    </v-toolbar>
+    </v-app-bar>
     <v-content>
-      <v-layout 
-        justify-content-center 
-        fill-height>
-        <v-flex fill-height>
-          <router-view/>
-        </v-flex>
-      </v-layout>
+      <v-container v-if="loading" fluid class="fill-height">
+        <v-row align="center" justify="center">
+          <v-col>
+            <loading-screen class="loading-screen" />
+          </v-col>
+        </v-row>
+      </v-container>
+      <router-view v-else />
     </v-content>
   </v-app>
 </template>
 
 <script>
 import UserSettings from "@/components/UserSettings";
+import LoadingScreen from "@/components/LoadingScreen";
+
 export default {
+  name: "App",
+
   components: {
-    UserSettings
+    UserSettings,
+    LoadingScreen
   },
 
+  data: () => ({
+    //
+  }),
   computed: {
     user() {
       return this.$store.state.user.user;
+    },
+    loading() {
+      return !!this.$store.state.user.loading;
     }
   }
 };
 </script>
-
 
 <style>
 #app {
@@ -66,5 +69,9 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.loading-screen {
+  padding-bottom: 10%;
 }
 </style>

@@ -11,13 +11,15 @@ const state = {
   user: null,
   user_request: null,
   user_success: null,
-  user_error: null
+  user_error: null,
+  loading: true
 };
 
 const getters = {};
 
 const mutations = {
   USER_UPDATE(state, { user }) {
+    state.loading = false;
     state.user = user;
   },
   USER_CLEAR(state) {
@@ -42,6 +44,9 @@ const mutations = {
     state.user_request = null;
     state.user_success = null;
     state.user_error = null;
+  },
+  USER_LOADING(state, payload) {
+    state.loading = payload;
   }
 };
 

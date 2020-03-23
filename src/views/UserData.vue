@@ -3,10 +3,9 @@
     <h2>This is the data stored on your user.</h2>
     <div class="info-wrapper">
       <table class="info-table">
-        <tr 
-          v-for="key in Object.keys(user)" 
-          :key="key">
-          <td>{{ key }}:</td><td>{{ user[key] }}</td>
+        <tr v-for="key in Object.keys(user)" :key="key">
+          <td>{{ key }}:</td>
+          <td>{{ user[key] }}</td>
         </tr>
       </table>
     </div>
