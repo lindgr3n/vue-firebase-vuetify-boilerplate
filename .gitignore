@@ -4,6 +4,8 @@ node_modules
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/
+serviceAccount.json
+cypress.env.json
 
 # local env files
 .env.local

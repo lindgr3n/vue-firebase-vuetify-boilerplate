@@ -10,7 +10,12 @@
     "url": "https://github.com/lindgr3n/vue-firebase-vuetify-boilerplate/issues"
   },
   "keywords": [
-    "Vue", "Vuetify", "Firebase", "Vue-CLI", "Cloud Firestore", "Boilerplate"
+    "Vue",
+    "Vuetify",
+    "Firebase",
+    "Vue-CLI",
+    "Cloud Firestore",
+    "Boilerplate"
   ],
   "private": true,
   "scripts": {
@@ -42,9 +47,11 @@
     "@vue/cli-service": "^4.2.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.0.3",
+    "cypress-firebase": "^0.11.0",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.1.2",
+    "firebase-admin": "^8.10.0",
     "firebase-tools": "^7.15.1",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",

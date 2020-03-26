@@ -103,6 +103,24 @@ uid: ""
 
 This information only exist if user log in using social. For ordinary email login only email is stored.
 
+### Setting up testing enviroment
+
+Summary from the guide [cypress-firebase](https://github.com/prescottprue/cypress-firebase#folders)
+
+* Create a new test user by signup or by firebase console
+* Create a new [Service account](https://sites.google.com/site/scriptsexamples/new-connectors-to-google-services/firebase/tutorials/authenticate-with-a-service-account)
+* Create `cypress.env.json` with the users UID.
+
+```json
+"TEST_UID": "...",
+```
+
+* Here we also need to add the firebase configuration like we have in env.local
+* Create serviceAccount.json with the private key following [authenticate-with-a-service-account](https://sites.google.com/site/scriptsexamples/new-connectors-to-google-services/firebase/tutorials/authenticate-with-a-service-account) "Generate a new private key"
+  * Paste the content in the generate json inside the `serviceAccount.json` file.
+
+*
+
 ## Sentry setup
 
 Login to [Sentry](https://sentry.io) (create an account if you dont have one). Set up your project.

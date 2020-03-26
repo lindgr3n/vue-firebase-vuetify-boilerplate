@@ -8,6 +8,8 @@
 
 // /* eslint-disable import/no-extraneous-dependencies, global-require */
 // const webpack = require('@cypress/webpack-preprocessor')
+const admin = require("firebase-admin");
+const cypressFirebasePlugin = require("cypress-firebase").pluginWithTasks;
 
 module.exports = (on, config) => {
   // on('file:preprocessor', webpack({
@@ -15,11 +17,15 @@ module.exports = (on, config) => {
   //  watchOptions: {}
   // }))
 
-  return Object.assign({}, config, {
+  // `on` is used to hook into various events Cypress emits
+  // `config` is the resolved Cypress config
+  // Pass on function, config, and admin instance. Returns extended config
+  const localConfig = Object.assign({}, config, {
     fixturesFolder: "tests/e2e/fixtures",
     integrationFolder: "tests/e2e/specs",
     screenshotsFolder: "tests/e2e/screenshots",
     videosFolder: "tests/e2e/videos",
     supportFile: "tests/e2e/support/index.js"
   });
+  return cypressFirebasePlugin(on, localConfig, admin);
 };
