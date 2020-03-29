@@ -191,7 +191,7 @@ If you want to keep your other project
 * Make sure you git commit all your changes in your project
 * Copy following from this repo to your project
 
-```.gitignore
+```txt
 .cicleci
 .firebase
 public/
