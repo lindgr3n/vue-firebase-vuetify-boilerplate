@@ -51,7 +51,6 @@ const fbConfig = {
   storageBucket,
   messagingSenderId
 };
-console.log("WOHOO", fbConfig);
 
 firebase.initializeApp(fbConfig);
 
