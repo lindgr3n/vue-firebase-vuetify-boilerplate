@@ -78,6 +78,7 @@
               name="login"
               label="Login"
               type="text"
+              data-testid="input-login"
             />
             <v-text-field
               v-model="password"
@@ -85,14 +86,19 @@
               name="password"
               label="Password"
               type="password"
+              data-testid="input-password"
             />
           </v-form>
-          <v-alert :value="hasError" type="error">
+          <v-alert :value="hasError" type="error" data-testid="error-dialog">
             {{ error }}
           </v-alert>
           <v-spacer />
           <v-layout column>
-            <v-btn :loading="loading" color="primary" @click="onLogin"
+            <v-btn
+              :loading="loading"
+              color="primary"
+              @click="onLogin"
+              data-testid="button-login"
               >Login</v-btn
             >
             <p>
