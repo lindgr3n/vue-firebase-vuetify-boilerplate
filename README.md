@@ -240,6 +240,7 @@ This is possibly by the great people behind.
 * [Vuetify](https://vuetifyjs.com)
 * Social style (colors) from [lipis]( https://lipis.github.io/bootstrap-social/)
 * Rocket logo base from [kisspng](https://www.kisspng.com/png-spacecraft-rocket-launch-clip-art-space-craft-1053917/download-png.html)
+* [Spinner source](https://loading.io/css/)
 
 And the rest of the dependencies tree that don't fit in this text :)
 
