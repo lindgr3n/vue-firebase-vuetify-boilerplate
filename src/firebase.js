@@ -4,9 +4,7 @@ import "firebase/firestore";
 
 const apiKey = process.env.VUE_APP_FIREBASE_KEY;
 const authDomain = `${process.env.VUE_APP_FIREBASE_PROJECTID}.firebaseapp.com`;
-const databaseURL = `https://${
-  process.env.VUE_APP_FIREBASE_PROJECTID
-}.firebaseio.com`;
+const databaseURL = `https://${process.env.VUE_APP_FIREBASE_PROJECTID}.firebaseio.com`;
 const projectId = process.env.VUE_APP_FIREBASE_PROJECTID;
 const storageBucket = `${process.env.VUE_APP_FIREBASE_PROJECTID}.appspot.com`;
 const messagingSenderId = process.env.VUE_APP_FIREBASE_MESSAGESENDERID;
@@ -25,7 +23,9 @@ firebase.initializeApp(config);
 // To remove firebase warning when trying to add record
 // Using Cloud Firestore
 const firestore = firebase.firestore();
-const settings = { /* your settings... */ timestampsInSnapshots: true };
+const settings = {
+  /* your settings... */
+};
 firestore.settings(settings);
 
 export default firebase;

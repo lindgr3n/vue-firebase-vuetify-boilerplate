@@ -6,60 +6,41 @@
       :nudge-width="200"
       offset-x
     >
-      <v-btn
-        slot="activator"
-        icon
-        dark
-      ><v-icon>account_circle</v-icon>
-        
-      </v-btn>
+      <template v-slot:activator="{ on }">
+        <v-btn v-on="on" icon dark><v-icon>mdi-account-circle</v-icon> </v-btn>
+      </template>
 
       <v-card>
         <v-list>
-          <v-list-tile avatar>
-            <v-list-tile-avatar>
-              <img 
-                :src="user.photoURL" 
-                :alt="user.displayName">
-            </v-list-tile-avatar>
+          <v-list-item>
+            <v-list-item-avatar>
+              <img :src="user.photoURL" :alt="user.displayName" />
+            </v-list-item-avatar>
 
-            <v-list-tile-content>
-              <v-list-tile-title>{{ user.displayName }}</v-list-tile-title>
-              <v-list-tile-sub-title>{{ user.email }}</v-list-tile-sub-title>
-            </v-list-tile-content>
+            <v-list-item-content>
+              <v-list-item-title>{{ user.displayName }}</v-list-item-title>
+              <v-list-item-subtitle>{{ user.email }}</v-list-item-subtitle>
+            </v-list-item-content>
 
-            <v-list-tile-action>
-              <v-btn
-                icon
-                @click="onLogOut"
-              >
-                <v-icon color="red">exit_to_app</v-icon>
+            <v-list-item-action>
+              <v-btn icon @click="onLogOut">
+                <v-icon color="red">mdi-exit-to-app</v-icon>
               </v-btn>
-            </v-list-tile-action>
-          </v-list-tile>
+            </v-list-item-action>
+          </v-list-item>
         </v-list>
 
-        <v-divider/>
+        <v-divider />
 
         <v-list>
-          <v-list-tile>
-            <v-btn 
+          <v-list-item>
+            <v-btn
               color="primary"
-              @click="$router.push('/user-data')" 
-            >Your stored data</v-btn>           
-          </v-list-tile>
-
-          <!-- <v-list-tile>
-            <v-list-tile-action>
-              <v-switch 
-                v-model="hints" 
-                color="purple"/>
-            </v-list-tile-action>
-            <v-list-tile-title>Enable hints</v-list-tile-title>
-          </v-list-tile> -->
+              @click="$router.push('/user-data').catch(() => {})"
+              >Your stored data</v-btn
+            >
+          </v-list-item>
         </v-list>
-
-        
       </v-card>
     </v-menu>
   </div>
@@ -91,5 +72,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
